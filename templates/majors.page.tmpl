@@ -1,0 +1,53 @@
+{{template "base" .}}
+
+{{define "title"}}
+  Major's Suite
+{{end}}
+
+{{define "content"}}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <img src="/static/images/marjors-suite.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="Room">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <h1 class="text-center mt-4">Welcome to the Major's Suite</h1>
+        <p>Mussum Ipsum, cacilds vidis litro abertis. Cevadis im ampola pa arma uma pindureta. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Praesent malesuada urna nisi, quis volutpat erat hendrerit non. Nam vulputate dapibus. Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis.</p>
+        <p>Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Quem num gosta di mé, boa gentis num é. Leite de capivaris, leite de mula manquis sem cabeça. Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae iaculis nisl.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <a id="check-availability-btn" href="#!" class="btn btn-success">Check Availability</a>
+      </div>
+    </div>
+  </div>
+{{end}}
+
+{{define "js"}}
+  <script>
+    document.getElementById("check-availability-btn").addEventListener("click",  function() {
+      let html = `
+      <form id="check-availability-form" action="" method="post" class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col">
+            <div class="row" id="reservation-dates-modal">
+              <div class="col">
+                <input type="text" name="start" id="start" class="form-control" placeholder="Arrival" required disabled />
+              </div>
+              <div class="col">
+                <input type="text" name="end" id="end" class="form-control" placeholder="Departure" required disabled />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      `;
+
+      attention.custom({msg: html, title: "Choose your dates"});
+    });
+  </script>
+{{end}}

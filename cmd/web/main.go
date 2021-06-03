@@ -1,15 +1,17 @@
 package main
 
 import (
+	"encoding/gob"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/reziak/gobookings/pkg/config"
-	"github.com/reziak/gobookings/pkg/handlers"
-	"github.com/reziak/gobookings/pkg/render"
+	"github.com/reziak/gobookings/internal/config"
+	"github.com/reziak/gobookings/internal/handlers"
+	"github.com/reziak/gobookings/internal/models"
+	"github.com/reziak/gobookings/internal/render"
 )
 
 const portNumber = ":8080"
@@ -18,6 +20,7 @@ var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
+	gob.Register(models.Reservation{})
 	// false in Development, true in production
 	app.InProduction = false
 
@@ -31,7 +34,7 @@ func main() {
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
-		log.Fatal("Cannot create template cache")
+		log.Fatal("Cannot create template cache.")
 	}
 
 	app.TemplateCache = tc
