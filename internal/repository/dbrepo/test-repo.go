@@ -89,6 +89,12 @@ func (m *testDBRepo) SearchAvailabilityForAllRooms(start, end time.Time) ([]mode
 	return rooms, nil
 }
 
+func (m *testDBRepo) AllRooms() ([]models.Room, error) {
+	var rooms []models.Room
+
+	return rooms, nil
+}
+
 func (m *testDBRepo) GetRoomByID(id int) (models.Room, error) {
 	var room models.Room
 
@@ -109,4 +115,47 @@ func (m *testDBRepo) UpdateUser(u models.User) error {
 
 func (m *testDBRepo) Authenticate(email, testPassword string) (int, string, error) {
 	return 1, "", nil
+}
+
+func (m *testDBRepo) AllReservations() ([]models.Reservation, error) {
+	var reservations []models.Reservation
+
+	return reservations, nil
+}
+
+func (m *testDBRepo) AllNewReservations() ([]models.Reservation, error) {
+	var reservations []models.Reservation
+
+	return reservations, nil
+}
+
+func (m *testDBRepo) GetReservationByID(id int) (models.Reservation, error) {
+	var reservation models.Reservation
+	return reservation, nil
+}
+
+func (m *testDBRepo) UpdateReservation(u models.Reservation) error {
+	return nil
+}
+
+func (m *testDBRepo) DeleteReservation(id int) error {
+	return nil
+}
+
+func (m *testDBRepo) UpdateProcessedForReservation(id, processed int) error {
+	return nil
+}
+
+func (m *testDBRepo) GetRestrictionsForRoomByDate(roomID int, start, end time.Time) ([]models.RoomRestriction, error) {
+	var rr []models.RoomRestriction
+
+	return rr, nil
+}
+
+func (m *testDBRepo) InsertBlockForRoom(id int, start_date time.Time) error {
+	return nil
+}
+
+func (m *testDBRepo) DeleteBlockByID(id int) error {
+	return nil
 }
